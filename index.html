@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>los embrollos | diego murat </title>
+<!-- Favicon / miniatura de la página -->
+    <link rel="icon" href="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/EMBROLLOS.png?v=1745197416371" type="image/png" />
+
+    <!-- 1. Importar la fuente IBM Plex Mono desde Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Reseteo y ajustes básicos */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Fondo negro y texto blanco global */
+      body {
+        font-family: "IBM Plex Mono", monospace;
+        background: #000;
+        color: #fff;
+        line-height: 1.4;
+        font-size: 13px;
+      }
+
+      header {
+        position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; z-index: 999;
+      }
+      .logo-link { text-decoration: none; color: inherit; }
+      .logo-link:hover { cursor: pointer; font-weight: Black; }
+      .logo-info { display: flex; gap: 1rem; font-weight: bold; font-family: "Helvetica", sans-serif; font-size: 1.4rem; }
+      .date-info {
+        font-size: 0.9rem;
+        opacity: 0.7;
+        text-decoration: none;
+        color: inherit;
+      }
+      .date-info:hover { cursor: pointer; opacity: 1; }
+
+      .container { display: grid; grid-template-columns: 1fr 300px; gap: 2rem; padding: 120px 2rem 2rem 2rem; min-height: 100vh; }
+      .main-content { display: flex; flex-direction: column; gap: 1rem; }
+
+      /* Contenedor de imágenes inicial */
+      #images-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+      #images-container img {
+        max-height: 100%;
+        height: 45rem;
+      }
+
+      /* Contenedor fijo abajo con texto */
+      .project-info {
+        position: fixed;
+        bottom: 0;
+        left: 1.5rem;
+        right: 9rem;
+        font-size: 10.5px;
+        z-index: 9999;
+        color: #bdbdbd;
+      }
+
+      aside {
+        position: sticky;
+        top: 6rem;
+        height: fit-content;
+      }
+
+      .projects-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding-left: 1rem;
+        font-size: 15px;
+      }
+
+      .projects-list h3 {
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+        font-weight: bold;
+      }
+
+      .projects-list a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 0.95rem;
+        transition: color 0.3s ease;
+      }
+
+      .projects-list a:hover {
+        font-weight: bold;
+        color: #ccc;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          grid-template-columns: 1fr;
+        }
+        aside {
+          margin-top: 2rem;
+          border-top: 1px solid #999;
+          padding-top: 1rem;
+        }
+      }
+
+      /* Contenedor para la sección de contenido dinámico (proyectos) */
+      #video-container {
+        display: none;
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 1rem;
+      }
+
+      /* Sección de tres columnas */
+      .three-columns {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 2;
+        margin-bottom: 2rem;
+      }
+
+      .three-columns .column {
+        flex: 1;
+      }
+
+      .three-columns .column p {
+        margin-bottom: 0.5rem;
+      }
+
+    .media-wrapper {
+  display: grid;
+  /* tantas columnas como quepan, cada una mínimo de 200px y máximo 1fr */
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1rem;
+}
+
+.media-wrapper img,
+.media-wrapper video {
+  width: 100%;   /* la anchura llena la celda */
+  height: auto;  /* la altura se calcula para respetar la proporción */
+  display: block; /* elimina pequeños espacios en línea */
+}
+
+
+      /* Estilos para videos dentro del contenido */
+      .project-video {
+        border: none;
+        outline: none;
+        width: 48%;
+        height: auto;
+        object-fit: contain;
+        background: #000;
+      }
+
+      @media (max-width: 768px) {
+        .three-columns {
+          flex-direction: column;
+          gap: 1rem;
+        }
+        .project-video {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="/" class="logo-link">
+        <div class="logo-info">
+          <span>DIEGO MURAT</span>
+          <span>aka</span>
+          <span>LOS</span>
+          <span>EMBROLLLOS</span>
+        </div>
+      </a>
+      <a href="https://www.instagram.com/losembrollos/" target="_blank" rel="noopener" class="date-info">@losembrollos</a>
+    </header>
+
+    <div class="container">
+      <section class="main-content">
+        <!-- Contenedor de imágenes inicial -->
+        <div id="images-container">
+          <img
+            src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/IMG_6718.JPG?v=1740530518596"
+            alt="Imagen 1"
+          />
+          <img
+            src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/IMG_1383.JPG?v=1740530537347"
+            alt="Imagen 2"
+          />
+        </div>
+
+        <!-- Contenedor de contenido dinámico (sección de proyecto) -->
+        <div id="video-container"></div>
+
+        <!-- Contenedor fijo de información del proyecto general -->
+        <div class="project-info">
+          <h2 >Los Embrollos</h2>
+                 <p>
+          [Diego Murat] (b. 1999, Morelia, México) He studied a Bachelor’s degree in Art and Design at the National Autonomous University of Mexico (UNAM) from 2018 to 2022, specializing in Visual Communication Strategies.
+As a visual artist, he focuses on the study of image and reality, culture, fashion, and identity, mainly through digital media such as photography, video, and 3D rendering. He explores how the image has become the sole source of “life” in our world. The need to keep creating images has led to new forms of representation, making these media essential tools in his work. Concepts like hyperreality, image (representation and symbolism), digital imagery, visual culture, and the cultural impact of the image are key areas of focus. He is interested in addressing the now blurred distinction between the tangible and virtual worlds, using digital imagery as a means to study contemporary culture and aesthetics, fostering new reflective processes through his work.
+       </p>
+       <p>   His work primarily centers on digital media, including 3D modeling, rendering, and animation, as well as photographic and video production and editing, digital graphic design, and visual programming software. He has been involved in the management and production of music events, brand and music artist direction and production, editorial design, and motion graphics creation for prominent brands.
+        </p>
+        </div>
+      </section>
+
+      <aside>
+        <div class="projects-list">
+          <h3>Projects</h3>
+          <a href="#proyecto1" id="1-link">01 / 3D</a>
+          <a href="#proyecto2" id="2-link">02 / G_P_P.mp3</a>
+          <a href="#proyecto3" id="3-link">03 / SALA DE ARTE</a>
+          <a href="#proyecto4" id="4-link">04 / MÁSQUECINE</a>
+          <a href="#huachi" id="huachi-link">05 / HUACHI ESTUDIO</a>
+        </div>
+      </aside>
+    </div>
+
+    <script>
+      // Objeto con la información de cada proyecto
+      const projectsContent = {
+"1-link": {
+          description: `
+            <div class="three-columns">
+              <div class="column">
+                <p><strong>3D</strong></p>
+              </div>
+              <div class="column">
+                <p>Graphic Design</p>
+                <p>Motion Graphics</p>
+                <p>3D Modeling</p>
+              </div>
+              <div class="column">
+                <p>A series of 3D modeling and motion works.</p>
+              </div>
+            </div>
+          `,
+          mosaic: `
+            <div class="media-wrapper">
+              
+              <video class="project-video" autoplay loop muted playsinline src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/3003_BUENO.mp4?v=1745196562199"></video>
+              <img src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/NUBES_BN.png?v=1745196583045" alt="NUBES_BN" />
+              <img src="https://cdn.glitch.me/7401b853-cc8b-4bf7-8085-b895978c5933/NIGHT_.png?v=1745196604453" alt="NIGHT_" />
+              <video class="project-video" autoplay loop muted playsinline src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/NUEVO_GPP.mp4?v=1745196638776"></video>
+              <video class="project-video" autoplay loop muted playsinline src="https://cdn.glitch.me/7401b853-cc8b-4bf7-8085-b895978c5933/GPP_REND_1920.mp4?v=1745193807168"></video>
+                            <video class="project-video" autoplay loop muted playsinline src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/LETRASLENT_2.mp4?v=1745196473388"></video>
+              <video class="project-video" autoplay loop muted playsinline src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/ANIMACION_SOLA.mp4?v=1745196659185"></video>
+              <video class="project-video" autoplay loop muted playsinline src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/FLY250125_2.mp4?v=1745196668407"></video>
+              <img src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/1.png?v=1745196681180" alt="1" />
+              <video class="project-video" autoplay loop muted playsinline src="https://cdn.glitch.me/7401b853-cc8b-4bf7-8085-b895978c5933/Secuencia%2007_3.mp4?v=1745196748849"></video>
+              <video class="project-video" autoplay loop muted playsinline src="https://cdn.glitch.me/7401b853-cc8b-4bf7-8085-b895978c5933/VIDEO_COMPLETO.mp4?v=1745198422967"></video>
+              <img src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/untitled.png?v=1745196757586" alt="untitled" />
+              <video class="project-video" autoplay loop muted playsinline src="https://cdn.glitch.me/7401b853-cc8b-4bf7-8085-b895978c5933/360_injected.mp4?v=1745196511767"></video>
+            </div>
+          `
+        },
+       // -- Dentro de projectsContent en tu <script> sustituyes "2-link" por:
+"2-link": {
+  description: `
+    <div class="three-columns">
+      <div class="column">
+        <p><strong>G_P_P.mp3</strong></p>
+      </div>
+      <div class="column">
+      <p>Co-FOUNDER</p>
+        <p>Creative Direction</p>
+        <p>Art Direction</p>
+        <p>Motion Graphics</p>
+        <p>3D Modeling</p>
+        <p>Graphic Design</p>
+        <p>Photography</p>
+      </div>
+      <div class="column">
+        <p>G_P_P.mp3 is a project born out of a passion for music (mainly reggaeton) and the need for an alternative space in Morelia. Its vision transcends a mere festive event: it functions as a cultural platform that explores, promotes, and disseminates the genre’s diversity—from its roots to its experimental and underground offshoots. Thus, G_P_P.mp3 becomes a sensory, community‑driven experience where dance and perreo serve as channels for both individual and collective expression.</p>
+      </div>
+    </div>
+  `,
+  mosaic: `
+    <div class="media-wrapper">
+      <video class="project-video" autoplay loop muted playsinline
+        src="https://cdn.glitch.me/7401b853-cc8b-4bf7-8085-b895978c5933/GPP_REND_1920.mp4?v=1745193807168">
+      </video>
+      <img src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/LOGO_FOND.png?v=1745193820902" alt="LOGO_FOND" />
+      <video class="project-video" autoplay loop muted playsinline
+        src="https://cdn.glitch.me/7401b853-cc8b-4bf7-8085-b895978c5933/FLY_BIGmp4.mp4?v=1745193887352">
+      </video>
+      <img src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/090.jpg?v=1745193928875" alt="090" />
+       <video class="project-video" autoplay loop muted playsinline
+        src="https://cdn.glitch.me/7401b853-cc8b-4bf7-8085-b895978c5933/FLYER110425.mp4?v=1745197608477">
+      </video>
+      <img src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/3.png?v=1745193853244" alt="3" />
+      <img src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/2_.jpg?v=1745193933566" alt="2_" />
+      <img src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/daimon2.jpg?v=1745193913163" alt="daimon2" />
+      <img src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/img20250303_14200751.jpg?v=1745198925671" alt="img20250303_14200751" />
+      <img src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/20250414_0032.jpg?v=1745198767098" alt="20250414_0032" />
+    <img src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/20250414_0024.jpg?v=1745194175790" alt="20250414_0024" />
+      </div>
+  `
+},
+
+        "3-link": {
+          description: `
+            <div class="three-columns">
+              <div class="column">
+                <p><strong>SALA DE ARTE </strong></p>
+              </div>
+              <div class="column">
+                <p>Social Media Content</p>
+                <p>Graphic Design</p>
+                <p>Video Editing</p>
+                <p>Motion Graphics</p>
+                <p>Art Direction</p>
+              </div>
+              <div class="column">
+                <p>Sala de Arte is a Cinépolis initiative focused on showcasing auteur, independent, and festival films. Its goal is to bring high-quality cinematic works to audiences that are not typically found in commercial theaters.</p>
+              </div>
+            </div>
+          `,
+          mosaic: `
+            <div class="media-wrapper">
+              <img src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/FICG_P_1.jpg?v=1740532561445" alt="FICG_P_1" />
+              <img src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/DEC_.jpg?v=1740532394158" alt="DEC_" />
+              <video class="project-video" autoplay loop muted playsinline src="https://cdn.glitch.me/7401b853-cc8b-4bf7-8085-b895978c5933/UNIDOS_.mp4?v=1740532790672"></video>
+              <img src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/invierno_3.jpg?v=1740532885211" alt="invierno_3" />
+              <img src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/ACTRICES_.jpg?v=1740532356193" alt="ACTRICES_" />
+              <img src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/YO_CAP_QUE_.jpg?v=1740532839656" alt="YO_CAP_QUE_" />
+            </div>
+          `
+        }, 
+       /* "4-link": {
+          description: `
+            <div class="three-columns">
+              <div class="column">
+                <p><strong>MÁSQUECINE CINÉPOLIS</strong></p>
+              </div>
+              <div class="column">
+ <p>Social Media Content</p>
+                <p>Graphic Design</p>
+                <p>Video Editing</p>
+                <p>Motion Graphics</p>
+                <p>Art Direction</p>
+              </div>
+              <div class="column">
+                <p>Más Que Cine is a Cinépolis initiative that offers special cinematic experiences beyond the conventional lineup. It includes events such as concert screenings, documentaries, anime, classic films, and themed screenings for different audiences.</p>
+              </div>
+            </div>
+          `,
+          mosaic: `
+            <div class="media-wrapper">
+              <video class="project-video" autoplay loop muted playsinline src="https://via.placeholder.com/300x200?text=Video+1"></video>
+              <img src="https://via.placeholder.com/300x200?text=Imagen+1" alt="Imagen 1" />
+              <img src="https://via.placeholder.com/300x200?text=Imagen+2" alt="Imagen 2" />
+            </div>
+          `
+        }, */
+        "huachi-link": {
+          description: `
+            <div class="three-columns">
+              <div class="column">
+                <p><strong>HUACHI ESTUDIO</strong></p>
+              </div>
+              <div class="column">
+                <p>Brand Identity</p>
+                <p>Graphic Design</p>
+                <p>Motion Graphics</p>
+                <p>Creative Direction</p>
+              </div>
+              <div class="column">
+                <p>Huachi Estudio is a project based in Morelia, Michoacán, that offers creative solutions and specializes in film development and scanning.</p>
+              </div>
+            </div>
+          `,
+          mosaic: `
+            <div class="videos-wrapper">
+              <video class="project-video" autoplay loop muted playsinline src="https://cdn.glitch.global/7401b853-cc8b-4bf7-8085-b895978c5933/Capa%201-huachistudio%202.mp4?v=1740442015639"></video>
+              <video class="project-video" autoplay loop muted playsinline src="https://cdn.glitch.me/7401b853-cc8b-4bf7-8085-b895978c5933/SLIDE_.mp4?v=1740509230917"></video>
+            </div>
+          `
+        }
+      };
+
+      // Seleccionamos todos los enlaces de la lista de proyectos
+      const projectLinks = document.querySelectorAll(".projects-list a");
+      const videoContainer = document.getElementById("video-container");
+      const imagesContainer = document.getElementById("images-container");
+
+      projectLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          // Ocultamos el contenedor de imágenes inicial
+          imagesContainer.style.display = "none";
+
+          // Obtenemos el id del enlace clickeado
+          const projectId = link.id;
+
+          // Verificamos si existe contenido para ese proyecto
+          if (projectsContent[projectId]) {
+            videoContainer.style.display = "block";
+            videoContainer.innerHTML =
+              projectsContent[projectId].description +
+              projectsContent[projectId].mosaic;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+
+
